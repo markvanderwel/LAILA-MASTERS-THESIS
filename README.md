@@ -12,10 +12,9 @@ The repository includes raw and processed spreadsheets and R scripts. Large raw 
 This folder contains the datasets used in the analyses.
 
 01 Datasets/
-├── 01_raw_data/ # Raw field measurements (species, traits, biomass, etc.)
-├── 02_processed_data/ # Cleaned and standardized datasets used in the models
-└── 04_original_data/ # Original file from fieldwork measurements, not to work with
-
+├── 01_raw_data/            # Raw field measurements (species, traits, biomass, etc.)
+├── 02_processed_data/      # Cleaned and standardized datasets used in the models
+└── 04_original_data/       # Original files from fieldwork; not used directly in analyses
 
 ---
 
@@ -23,10 +22,8 @@ This folder contains the datasets used in the analyses.
 All R scripts used in the thesis analyses.
 
 02 R Scripts/
-├── 01_phylo_master_analysis.R # Full phylogenetic diversity workflow
-└── 02_functional_master_analysis.R # Full functional diversity workflow
-
-(...) 
+├── 01_phylo_master_analysis.R       # Full phylogenetic diversity workflow
+└── 02_functional_master_analysis.R  # Full functional diversity workflow
 
 
 #### Master Scripts Description
