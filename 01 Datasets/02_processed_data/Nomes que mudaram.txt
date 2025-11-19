@@ -1,0 +1,43 @@
+Handroanthus avellanedae - Handroanthus heptaphyllus,Handroanthus,Bignoniaceae,,
+Caesalpinia pluviosa - Cenostigma pluviosum,Cenostigma,Fabaceae,,
+Pterocarpus violaceus - Pterocarpus rohrii,Pterocarpus,Fabaceae,,
+Piptadenia Gonoacantha - Pityrocarpa gonoacantha,Pityrocarpa,Fabaceae,,
+Psidium cattleyanum - Psidium cattleianum,Psidium,Myrtaceae,,
+Hemenaea courbaril - erro de digitação - Hymenaea courbaril,Hymenaea,Fabaceae,,
+Piptadenia paniculata - Pityrocarpa paniculata,Pityrocarpa,Fabaceae,,
+Ocotea pulchella - Mespilodaphne pulchella,Mespilodaphne,Lauraceae,,
+Myrsine ferruginea e Rapanea_ferruginea - Myrsine coriacea,Myrsine,Primulaceae,,
+Tibouchina granulosa - Pleroma granulosum,Pleroma,Melastomataceae,,
+Stryphnodendron barbatiman - Stryphnodendron adstringens,Stryphnodendron,Fabaceae,, DÚVIDA Stryphnodendron barbatulum só tem em Brasília
+Cinnamomum zeylanicum - Cinnamomum verum,Cinnamomum,Lauraceae,, TEM VÁRIOS SINÔNIMOS MAS ESCOLHI O VERUM
+Citharexyllum myrianthum - Citharexylum myrianthum,Citharexylum,Verbenaceae,,
+Gochnatia polymorpha - Moquiniastrum polymorphum,Moquiniastrum,Asteraceae,,
+Tamara - Phoenix dactylifera,Phoenix,Arecaceae,,
+Mimosa artemisiana - Mimosa schomburgkii,Mimosa,Fabaceae,,
+Myrcia fallax - Myrcia splendens,Myrcia,Myrtaceae,,
+Schizolobium paraybae - Schizolobium parahyba,Schizolobium,Fabaceae,,
+Tibouchina sellowiana - Pleroma sellowianum,Pleroma,Melastomataceae,,
+Chorisia speciosa - Ceiba speciosa,Ceiba,Malvaceae,,
+indetPossível_Cabeludinha - Myrciaria glazioviana,Myrciaria,Myrtaceae,, CONFIRMOU?
+Bombacopsis glabra - Pachira glabra
+Peschiera fuchsiifolia - Tabernaemontana hystrix,Tabernaemontana,Apocynaceae,,
+Vernonia polyanthes - Vernonanthura polyanthes,Vernonanthura,Asteraceae,,
+Trema micrantha - Trema micranthum
+
+
+
+INDIVÍDUOS FORAM IDENTIFICADOS?
+Handroanthus sp.
+Cariniana_sp
+Centrolobium_sp
+Schinus_sp
+Caesalpinia
+Leandra_sp
+indetPossível_Cabeludinha
+
+
+
+
+
+
+

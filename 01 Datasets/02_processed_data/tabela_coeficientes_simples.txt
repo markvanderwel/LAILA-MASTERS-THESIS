@@ -1,0 +1,16 @@
+Modelo	Termo	Estimate	SE	t	p
+SR + Silte	Intercepto	11.01	0.266	41.39	0
+SR + Silte	Silte (%)	-0.003	0.001	-2.05	0.048
+SR + Silte	Riqueza de espécies (SR)	0.042	0.015	2.73	0.008
+SR + Silte + PCPS1	Intercepto	10.895	0.271	40.24	0
+SR + Silte + PCPS1	Riqueza de espécies (SR)	0.048	0.016	3.08	0.003
+SR + Silte + PCPS1	Silte (%)	-0.003	0.001	-1.73	0.091
+SR + Silte + PCPS1	PCPS1 (↑ = menos Fabaceae)	-0.613	0.384	-1.6	0.115
+SR + PCPS1	Intercepto	10.541	0.207	50.97	0
+SR + PCPS1	Riqueza de espécies (SR)	0.054	0.016	3.43	0.001
+SR + PCPS1	PCPS1 (↑ = menos Fabaceae)	-0.701	0.382	-1.84	0.071
+PCPS1 + PD_q0	Intercepto	10.509	0.221	47.48	0
+PCPS1 + PD_q0	PCPS1 (↑ = menos Fabaceae)	-0.875	0.403	-2.17	0.033
+PCPS1 + PD_q0	PD (q0)	0.001	0	3.16	0.002
+SESPDab	Intercepto	11.054	0.143	77.13	0
+SESPDab	SESPDab	-0.014	0.04	-0.34	0.738

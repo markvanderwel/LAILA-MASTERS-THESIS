@@ -47,3 +47,26 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# Heavy files
+
+*.nc
+*.tif
+*.tiff
+*.gpkg
+*.shp
+*.dbf
+*.prj
+*.shx
+*.qgz
+*.qgs
+*.geojson
+*.kml
+*.kmz
+*.gpx
+*.png
+*.jpg
+*.jpeg
+*.svg
+*.xlsx
+*.pdf
