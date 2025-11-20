@@ -1,8 +1,16 @@
-##############################################
-#### DIVERSIDADE FUNCIONAL MESTRADO LAÍLA ####
-##############################################
 
-# Carregar pacotes
+######################################
+### SCRIPT FOR FUNCTIONAL ANALYSIS ###
+######################################
+
+# last update: 2025/11/20 (YYYY/MM/DD)
+# Authors: Laíla Arnauth & André T. C. Dias
+# Post Graduate Program in Ecology - UFRJ - Brazil
+# Collaboration with University of Regina - Canada # Forest Dynamics Lab
+
+
+
+# Load all packages
 library(FD)
 library(tidyverse)
 library(MuMIn) #AICc
