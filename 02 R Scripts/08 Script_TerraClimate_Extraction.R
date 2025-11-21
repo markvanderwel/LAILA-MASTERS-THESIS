@@ -1,79 +1,10 @@
-### DADOS AMBIENTAIS ###
-
-# BAIXAR NO TERRA CLIMATE
-
-#-/-
-
-# Raster
-# obs: ppt = precipitation (mm); pet = potential_evaporation (mm)
-## tmax (média mensal) = temperatura máxima (ºC); tmin (média mensal) = temperatura mínima (ºC)
-### vpd (média mensal) = Vapor Pressure Deficit (kpd)
-
-install.packages("ncdf4")
-library(ncdf4)
-library(raster)
-library(readxl)
-library(writexl)
-
-##Carrega o raster como stack
-# ppt
-terraclimate_rst <- stack(list.files("~/01 Masters_LA/07_environ_data_TerraClimate", pattern = "TerraClimate_ppt", full.names = T))
-#tmax
-terraclimate_rst <- stack(list.files("~/01 Masters_LA/07_environ_data_TerraClimate", pattern = "TerraClimate_tmax", full.names = T))
-#tmin
-terraclimate_rst <- stack(list.files("~/01 Masters_LA/07_environ_data_TerraClimate", pattern = "TerraClimate_tmin", full.names = T))
-# pet
-terraclimate_rst <- stack(list.files("~/01 Masters_LA/07_environ_data_TerraClimate", pattern = "TerraClimate_pet", full.names = T))
-# vpd
-terraclimate_rst <- stack(list.files("~/01 Masters_LA/07_environ_data_TerraClimate", pattern = "TerraClimate_vpd", full.names = T))
-warnings()
-
-##renomear os layers do stack
-names(terraclimate_rst) <- apply(expand.grid(1:12, 2018:2022),1, FUN = paste, collapse = "_")
-
-##data.frame com as coordenadas latlong
-
-moderadores <- read_excel("~/01 Masters_LA/04 Maps/moderadores.xlsx")
-View(moderadores)
-
-##Cortar o raster em um extent para reduzir o uso da memória
-e1 <- extent(-44.608007, -40.974161, -22.859079, -21.272083)
-terraclimate_rst_crop <- crop(terraclimate_rst, e1)
-
-##extrair os dados climáticos
-env_raw <- extract(terraclimate_rst_crop, moderadores[, c("Longitude", "Latitude")])
-
-env_raw_df <- as.data.frame(env_raw)
-
-# 6) Calcular média temporal por site (média das 60 camadas)
-env_mean_by_site <- env_raw_df %>%
-  mutate(mean_vpd = rowMeans(., na.rm = TRUE))
-
-env_final <- bind_cols(moderadores, env_mean_by_site["mean_vpd"])
-
-## Salvar em planilha do excel
-
-env_data_df <- as.data.frame(env_data)
-write_xlsx(env_data_df, "~/01 Masters_LA/00 MASTERS-DATA/01 Datasets/01_raw_data/amb_vpd.xlsx")
-
-
-
-
-
-
-
-
-
-
-
-
-
-##########################################################################
 
 ###############################################
 ### ENVIRONMENTAL DATA EXTRACTION - TerraClimate
 ### Averaged for each site (2018–2022)
 ###############################################
+
+# ppt = precipitation (mm); pet = potential evapotranspiration (mm); tmax (monthly mean) = maximum temperature (ºC); tmin (monthly mean) = minimum temperature (ºC); vpd (monthly mean) = Vapor Pressure Deficit (kpd)
 
 library(ncdf4)
 library(raster)
