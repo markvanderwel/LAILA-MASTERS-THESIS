@@ -12,15 +12,15 @@
 # Load all packages
 
 library(readr)
-library("V.PhyloMaker2")
+library(tidyverse)
+library(readxl)
 library(writexl)
 library(ggplot2)
+library(corrplot)
+library("V.PhyloMaker2")
 library(picante)
 library(ape)
 library(vegan)
-library(readxl)
-library(tidyverse)
-library(corrplot)
 library(lme4)
 library(lmerTest) # LMM
 library(MuMIn) #AICc
@@ -305,42 +305,65 @@ boxplot(dadosmisto$log_produt,
         col = "#32CD32")
 dev.off()
 
-############# CORRELATION MATRIX - INDEPENDENT VARIABLES (X) #############
+###################################
+####### CORRELATION MATRIX ########
+#### INDEPENDENT VARIABLES (X) ####
+###################################
 
-# tidyverse
+# Read dataset
+data <- read.csv("01 Datasets/01_raw_data/dadosmisto.csv", header = TRUE)
 
-dadosmisto <- read.csv("01 Datasets/01_raw_data/dadosmisto.csv",
-                       header = TRUE,
-                       sep = ";")
-dadosmisto1 <- dadosmisto[-c(1:7), ] # WITHOUT CSA
+# Remove first 7 rows (without CSA)
+data_filtered <- data[-c(1:7), ]
 
-# Defining the independent variables (X)
+# Define independent variables
+labels_pretty <- c(
+  ppt         = "Precipitation (ppt)",
+  tmax        = "Max Temperature (°C)",
+  tmin        = "Min Temperature (°C)",
+  pet         = "PET",
+  vpd         = "VPD",
+  mcwd        = "MCWD",
+  PC1_clima   = "Climate PC1",
+  altitude    = "Altitude (m)",
+  declividade = "Slope (%)",
+  silte       = "Silt (%)",
+  ph          = "Soil pH",
+  valor_s     = "Soil S",
+  valor_t     = "Soil T",
+  PC1nutri    = "Nutrients PC1",
+  PC2nutri    = "Nutrients PC2",
+  season_temp = "Temp Seasonality",
+  season_ppt  = "PPT Seasonality",
+  c.n_soloid  = "Soil C/N Ratio"
+)
 
-variaveis_x <- c("SR","unbias.simp","shannon","SESPDab", "SESMPDab", 
-                 "SESMNTDab", "PSV", "PSR", "PSEab", "PSC","ppt", 
-                 "tmax", "tmin", "pet", "vpd","mcwd","PC1_clima","altitude","declividade","silte","ph","valor_s","valor_t","PC1nutri","PC2nutri","pcps1ab","pcps2ab","faba","PD_q0")
+variables_x <- c("ppt", "tmax", "tmin", "pet", "vpd", "mcwd", "PC1_clima",
+                 "altitude", "declividade", "silte", "ph", "valor_s", "valor_t",
+                 "PC1nutri", "PC2nutri", "season_temp", "season_ppt", "c.n_soloid")
 
-variaveis_x <- c("SR","SESPDab", "SESMPDab", 
-                 "SESMNTDab", "pcps1ab","pcps2ab","faba","PD_q0")
+# Create dataframe with X variables
+data_x <- data_filtered %>%
+  dplyr::select(all_of(variables_x))
 
-variaveis_x <- c("ppt","tmax", "tmin", "pet", "vpd","mcwd","PC1_clima","altitude","declividade","silte","ph","valor_s","valor_t","PC1nutri","PC2nutri","season_temp","season_ppt","c.n_soloid")
+# Correlation matrix
+cor_matrix_x <- cor(data_x, use = "complete.obs")
 
-# Creating a new dataframe containing only the X variables.
-dados_x <- dadosmisto1 %>%
-  dplyr::select(all_of(variaveis_x))
-
-# Calculating the correlation matrix with the dataframe dados_x
-cor_matrix_x <- cor(dados_x, use = "complete.obs")
-print(cor_matrix_x)
+# Replace row and column names with pretty labels
+rownames(cor_matrix_x) <- labels_pretty[variables_x]
+colnames(cor_matrix_x) <- labels_pretty[variables_x]
 
 # Plot
+png("~/01 Masters_LA/06 Figures/01 exploratory_plots/correlation_matrix_environmental_without_CSA.png",
+    width = 1200, height = 800, res = 150)
 
-png("~/01 Masters_LA/06 Figures/01 exploratory_plots/matriz.cor_environmental_withoutCSA.png", width = 1200, height = 800, res = 150)
-corrplot(cor_matrix_x, method = "circle", type = "upper", 
-         tl.col = "black", tl.cex = 0.8)
+corrplot(cor_matrix_x,
+         method = "circle",
+         type = "upper",
+         tl.col = "black",
+         tl.cex = 0.8)
+
 dev.off()
-
-
 
 ##########################
 ### LINEAR MIXED MODEL ###
