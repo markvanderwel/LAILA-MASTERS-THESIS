@@ -866,7 +866,6 @@ example <- read.csv("01 Datasets/01_raw_data/filogenia_total_Sem_CSA.csv")
 ### generate a phylogeny for the sample species list
 tree <- phylo.maker(example, tree = GBOTB.extended.TPL,output.sp.list = TRUE,nodes = nodes.info.1.TPL, scenarios="S3")
 tree_ok <- tree$scenario.3
-summary(tree_ok)
 
 phylo.dissim = cophenetic(tree_ok)
 std.pdis = (phylo.dissim-min(phylo.dissim))/(max(phylo.dissim)-min(phylo.dissim))
@@ -1009,7 +1008,31 @@ fam_summary <- fam_centroids %>%
   left_join(fam_contrib, by = "Family") %>%
   arrange(desc(Pct_PC1)) 
 head(fam_summary, 10)
-# Fabaceae #1
+# Fabaceae #1, but not the only one
+
+# Filter out the top 10 families that contribute the most to PC1.
+fam_plot_top10 <- fam_summary %>%
+  slice_max(order_by = Pct_PC1, n = 10) %>%
+  mutate(Family = reorder(Family, pcps.1))
+
+g_fam_pcps1_top10 <- ggplot(fam_plot_top10, aes(x = pcps.1, y = Family)) +
+  geom_col(fill = "grey70") +
+  geom_vline(xintercept = 0, linetype = "dashed") +
+  theme_classic(base_size = 13) +
+  labs(
+    title = "Top 10 family loadings on PCPS1",
+    x = "Centroid along PCPS1",
+    y = "Family"
+  )
+
+print(g_fam_pcps1_top10)
+
+ggsave(
+  filename = "~/01 Masters_LA/06 Figures/02 plots/PCPS1_family_loadings_top10.jpeg",
+  plot = g_fam_pcps1_top10,
+  width = 7, height = 5, dpi = 300
+)
+
 
 ###########################
 ### PHYLOGENETIC SIGNAL ###
