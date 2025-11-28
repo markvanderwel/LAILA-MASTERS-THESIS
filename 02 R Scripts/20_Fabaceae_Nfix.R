@@ -1,6 +1,8 @@
 #### Fabaceae ####
 
 library(readr)
+library(tidyverse)
+library(ggplot2)
 
 example <- read_csv("~/01 Masters_LA/00 MASTERS-DATA/01 Datasets/01_raw_data/filogenia_total.csv")
 View(example)
@@ -10,14 +12,12 @@ fab_species <- example %>%
   distinct(species)
 fab_species # 34
 
-fab <- read.table("~/0b1 Masters_LA/00 MASTERS-DATA/01 Datasets/01_raw_data/fabacea_nfix.txt",
+fab <- read.table("~/01 Masters_LA/00 MASTERS-DATA/01 Datasets/01_raw_data/fabacea_nfix.txt",
                   header = TRUE,
                   sep = ",",
                   stringsAsFactors = FALSE)
 
 fab
-
-library(tidyverse)
 
 fab_summary <- fab %>%
   count(specie.nfix) %>%
@@ -28,7 +28,7 @@ fab_summary <- fab %>%
 
 fab_summary
 
-library(ggplot2)
+# Plot
 
 g_fix <- ggplot(fab_summary, aes(x = type, y = n)) +
   geom_col(fill = "grey70") +
