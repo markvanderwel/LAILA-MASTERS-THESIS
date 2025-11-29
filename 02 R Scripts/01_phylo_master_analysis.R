@@ -3,7 +3,7 @@
 ### SCRIPT FOR PHYLOGENETIC ANALYSIS ###
 ########################################
 
-# Last update: 2025/11/25 (YYYY/MM/DD)
+# Last update: 2025/11/28 (YYYY/MM/DD)
 # Authors: Laíla Arnauth & André T. C. Dias
 # Post Graduate Program in Ecology - UFRJ - Brazil
 # Collaboration with University of Regina - Canada # Forest Dynamics Lab
@@ -335,7 +335,7 @@ labels_pretty <- c(
   PC2nutri    = "Nutrients PC2",
   season_temp = "Temp Seasonality",
   season_ppt  = "PPT Seasonality",
-  c.n_soloid  = "Soil C/N Ratio",
+  c.n_soloid  = "Soil C/N Ratio"
   
 )
 
@@ -379,11 +379,17 @@ modelo_nulo <- lmer(log_produt ~ (1|site), data = dadosmisto1, REML = FALSE)
 
 ### WITHOUT CSA ###
 
-m1 <- lmer(log_produt ~ sr + silte + (1 | site), data = dadosmisto1, REML = FALSE)
+m1 <- lmer(log_produt ~ sr + (1 | site), data = dadosmisto1, REML = FALSE)
 summary(m1) 
-anova(modelo_nulo, m1) # p-value = 0.005454 **
-r.squaredGLMM(m1) # 0.5561193
-AICc(m1) # 73.76227
+anova(modelo_nulo, m1) # p-value = 0.00766 **
+r.squaredGLMM(m1) # 0.5957724
+AICc(m1) # 74.78371
+
+mpd <- lmer(log_produt ~ pd + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(mpd) 
+anova(modelo_nulo, mpd) # p-value = 0.00846 **
+r.squaredGLMM(mpd) # 0.6219464
+AICc(mpd) # 75.17727
 
 m2 <- lmer(log_produt ~ sr + silte + pcps1 + (1 | site), data = dadosmisto1, REML = FALSE)
 summary(m2) 
@@ -475,6 +481,18 @@ anova(modelo_nulo, m17) # p-value = error
 r.squaredGLMM(m17) # 0.5741846
 AICc(m17) # 66.78168
 ### NEW BEST MODEL
+
+m18 <- lmer(log_produt ~ altitude + season_ppt + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(m18) 
+AICc(m18) # 75.9823
+
+m19 <- lmer(log_produt ~ silte + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(m19) # p-value = 0.0755 .
+AICc(m19) # 78.88817
+
+m20 <- lmer(log_produt ~ PC1nutri + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(m20) # p-value = 0.0755 .
+AICc(m19) # 78.8881
 
 ##########################
 #### MULTICOLINEARITY ####
