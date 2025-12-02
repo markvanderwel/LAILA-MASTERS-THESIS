@@ -368,7 +368,7 @@ dev.off()
 ### LINEAR MIXED MODEL ###
 ##########################
 
-#LMM
+# LMM
 
 dadosmisto <- read.csv("01 Datasets/01_raw_data/dadosmisto.csv",
                        header = TRUE)
@@ -495,6 +495,14 @@ AICc(m19) # 78.88817
 m20 <- lmer(log_produt ~ PC1nutri + (1 | site), data = dadosmisto1, REML = FALSE)
 summary(m20) # p-value = 0.0755 .
 AICc(m19) # 78.8881
+
+m21 <- lmer(log_produt ~ scale(basal_area) + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(m21) # p-value = <2e-16 ***
+AICc(m21) # 10.69459
+
+m22 <- lmer(log_produt ~ gini + (1 | site), data = dadosmisto1, REML = FALSE)
+summary(m22) # p-value = <2e-16 ***
+AICc(m22) # 10.6945
 
 ##########################
 #### MULTICOLINEARITY ####
