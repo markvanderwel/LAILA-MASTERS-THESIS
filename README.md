@@ -1,5 +1,5 @@
 # Master’s Thesis – Diversity Effects on Biomass Accumulation
-GDFG
+
 This repository contains the reproducible analytical workflow for my master’s thesis, which investigates how taxonomic, functional, and phylogenetic diversity influence biomass accumulation in Atlantic Forest restoration sites.
 
 The repository includes raw and processed spreadsheets and R scripts. Large raw data, GIS files, and heavy intermediates are intentionally excluded through the `.gitignore`.
